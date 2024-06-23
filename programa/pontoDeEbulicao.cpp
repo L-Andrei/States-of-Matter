@@ -26,5 +26,6 @@ double PontoDeEbulicao::calcular(double pressao) { // Calcula o ponto de ebuliç
 
 benzeno: a = 6.90565, b = 1211.033, c = 220.79;
 água: a = 8.07131, b = 1730.63, c = 233.426;
+etanol: a = 8.20417 b = 1642.89 c = 230.300;
 
 */
