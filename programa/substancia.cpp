@@ -1,47 +1,39 @@
 #include <iostream>
 #include <cmath>
 #include "substancia.h"
+#include "pontoDeEbulicao.h"
+#include "ambiente.h"
 
-Substancia::Substancia(double v, double g_mols, double massa, double calor_latente_vaporizacao, double calor_latente_fusao) {
+Substancia::Substancia (double v, double densidade, double t, double c){
     volume = v;
-    m_mols = g_mols;
-    m = massa;
-    mols = m / g_mols;
-    Substancia::calor_latente_vaporizacao = calor_latente_vaporizacao;
-    Substancia::calor_latente_fusao = calor_latente_fusao;
-    calcula_entalpia_vaporizacao();
+    d = densidade;
+    temp = t;
+    calor_esp = c;
+    m = volume * d;
+};
+
+void Substancia::esquentar(double calorPorSeg){ // Esquenta a substância com uma quantidade de energia.
+    double deltaTemp = calorPorSeg /(m * calor_esp); // A variavel calorPorSeg esta em joules;
+    temp += deltaTemp; // aumenta ou diminui a temperatura.
 }
 
-void Substancia::calcula_entalpia_vaporizacao() {
-    entalpia = m * calor_latente_vaporizacao; // m em gramas, calor_latente_vaporizacao em J/g
+void Substancia::equilibrioTermico(Ambiente amb){
+    temp = amb.getTemperatura(); // Equilibra a temperatura da substância com a do ambiente.
 }
 
-void Substancia::calcula_entalpia_fusao() {
-    entalpia = m * calor_latente_fusao; // m em gramas, calor_latente_fusao em J/g
+void Substancia::calculaPontoDeEbulicao(double a, double b, double c, Ambiente amb){
+    p = PontoDeEbulicao(a,b,c);
+    temp_ebulicao = p.calcular(amb.conversor());
 }
 
-double Substancia::getCalorLatenteVaporizacao() const {
-    return calor_latente_vaporizacao;
+bool Substancia::entrouEmEbulicao(){
+    if(temp >= temp_ebulicao){  // Verifica se a substância já atingiu a temperatura de ebulição.
+        return true;
+    }else{
+        return false;
+    }
 }
 
-void Substancia::setCalorLatenteVaporizacao(double clv) {
-    calor_latente_vaporizacao = clv;
-    calcula_entalpia_vaporizacao(); // Recalculate entalpia if calor latente changes
-}
-
-double Substancia::getCalorLatenteFusao() const {
-    return calor_latente_fusao;
-}
-
-void Substancia::setCalorLatenteFusao(double clf) {
-    calor_latente_fusao = clf;
-    calcula_entalpia_fusao(); // Recalculate entalpia if calor latente changes
-}
-
-double Substancia::calculaPontoEbulicao() {
-    const double R = 8.314; 
-    double temperatura_inicial = 273.15; 
-
-    double temperatura_ebulicao = ((calor_latente_vaporizacao * temperatura_inicial ) / R);
-    return temperatura_ebulicao;
+double Substancia::getTemp(){
+    return temp;
 }

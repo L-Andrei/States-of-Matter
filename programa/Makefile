@@ -1,4 +1,4 @@
-SOURCES = main.cpp substancia.cpp ambiente.cpp
+SOURCES = main.cpp substancia.cpp ambiente.cpp pontoDeEbulicao.cpp interface.cpp
 
 OBJECTS = $(SOURCES:.cpp=.o)
 

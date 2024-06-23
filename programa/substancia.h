@@ -1,27 +1,28 @@
 #ifndef SUBSTANCIA_H
 #define SUBSTANCIA_H
+#include "pontoDeEbulicao.h"
+#include "ambiente.h"
 
 class Substancia {
+private:
+
+    double volume; // ml
+    double d; // Densidade da substancia.
+    double m; // g
+    double temp; // temperatura inicial. 
+    double calor_esp ; // Calor especifico da substancia, exemplo água possui 4184 J/Kg. C°.
+    PontoDeEbulicao p; // classe responsável por calcular o ponto de ebulição.
+    double temp_ebulicao; // temperatura de ebulição;
+
 public:
-    double volume;
-    double m_mols;
-    double m;
-    double mols;
-    double entalpia;
-    double calor_latente_vaporizacao;
-    double calor_latente_fusao;
 
-    Substancia (double v, double g_mols, double massa, double calor_latente_vaporizacao, double calor_latente_fusao);
+    Substancia(double v, double densidade, double t, double c);
+    void esquentar(double calorPorSeg);
+    void equilibrioTermico(Ambiente amb);
+    void calculaPontoDeEbulicao(double a, double b, double c, Ambiente amb);
+    bool entrouEmEbulicao();
+    double getTemp();
 
-    void calcula_entalpia_vaporizacao();
-    void calcula_entalpia_fusao();
-    double calculaPontoEbulicao();
-
-    // Getters and setters
-    double getCalorLatenteVaporizacao() const;
-    void setCalorLatenteVaporizacao(double clv);
-    double getCalorLatenteFusao() const;
-    void setCalorLatenteFusao(double clf);
 };
 
 #endif // SUBSTANCIA_H
