@@ -4,6 +4,13 @@
 #include "pontoDeEbulicao.h"
 #include "interface.h"
 
+void converterSegundos(int segundos, int& horas, int& minutos, int& seg) {
+    horas = segundos / 3600;
+    segundos %= 3600;
+    minutos = segundos / 60;
+    seg = segundos % 60;
+}
+
 int main() {
 
     int loops_agua,loops_benzeno,loops_etanol;
@@ -16,7 +23,6 @@ int main() {
     etanol.calculaPontoDeEbulicao(8.20417, 1642.89, 230.300, amb);
     benzeno.calculaPontoDeEbulicao(6.90565, 1211.033, 220.790, amb);
 
-    
     while (!agua.entrouEmEbulicao()) {
         agua.esquentar(1000.0); // Supondo que estamos adicionando 1000 joules por segundo
         loops_agua++;
@@ -32,9 +38,19 @@ int main() {
         loops_benzeno++;
     }
 
-    std::cout << "Água demorou " << loops_agua << " loops para entrar em ebulição." << std::endl;
-    std::cout << "Etanol demorou " << loops_etanol << " loops para entrar em ebulição." << std::endl;
-    std::cout << "Benzeno demorou " << loops_benzeno << " loops para entrar em ebulição." << std::endl;
+    // Convertendo o número de loops em horas, minutos e segundos
+    int horas_agua, minutos_agua, seg_agua;
+    int horas_etanol, minutos_etanol, seg_etanol;
+    int horas_benzeno, minutos_benzeno, seg_benzeno;
+
+    converterSegundos(loops_agua, horas_agua, minutos_agua, seg_agua);
+    converterSegundos(loops_etanol, horas_etanol, minutos_etanol, seg_etanol);
+    converterSegundos(loops_benzeno, horas_benzeno, minutos_benzeno, seg_benzeno);
+
+    // Exibindo o tempo em horas, minutos e segundos que cada substância demorou para entrar em ebulição
+    std::cout << "Água demorou: " << horas_agua << " horas, " << minutos_agua << " minutos e " << seg_agua << " segundos." << std::endl;
+    std::cout << "Etanol demorou: " << horas_etanol << " horas, " << minutos_etanol << " minutos e " << seg_etanol << " segundos." << std::endl;
+    std::cout << "Benzeno demorou: " << horas_benzeno << " horas, " << minutos_benzeno << " minutos e " << seg_benzeno << " segundos." << std::endl;
 
     return 0;
 }
