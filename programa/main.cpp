@@ -24,17 +24,17 @@ int main() {
     benzeno.calculaPontoDeEbulicao(6.90565, 1211.033, 220.790, amb);
 
     while (!agua.entrouEmEbulicao()) {
-        agua.esquentar(1000.0); // Supondo que estamos adicionando 1000 joules por segundo
+        agua.esquentar(10000.0); // Supondo que estamos adicionando 1000 joules por segundo
         loops_agua++;
     }
 
     while (!etanol.entrouEmEbulicao()) {
-        etanol.esquentar(1000.0); // Supondo que estamos adicionando 1000 joules por segundo
+        etanol.esquentar(10000.0); // Supondo que estamos adicionando 1000 joules por segundo
         loops_etanol++;
     }
 
     while (!benzeno.entrouEmEbulicao()) {
-        benzeno.esquentar(1000.0); // Supondo que estamos adicionando 1000 joules por segundo
+        benzeno.esquentar(10000.0); // Supondo que estamos adicionando 1000 joules por segundo
         loops_benzeno++;
     }
 

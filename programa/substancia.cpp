@@ -37,3 +37,7 @@ bool Substancia::entrouEmEbulicao(){
 double Substancia::getTemp(){
     return temp;
 }
+
+void Substancia::setVolume(double v){
+    volume = v;
+}

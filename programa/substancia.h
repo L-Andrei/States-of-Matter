@@ -22,6 +22,7 @@ public:
     void calculaPontoDeEbulicao(double a, double b, double c, Ambiente amb);
     bool entrouEmEbulicao();
     double getTemp();
+    void setVolume(double v);
 
 };
 
