@@ -94,13 +94,11 @@ int main() {
     volume2 = 345.5;
     volume3 = 277500;
     
-    //executaTeste(volume1,volume2,volume3,aquecimento);
-    /*
-    for(int i=1000; i<100000;i+=10000){
+    executaTeste(volume1,volume2,volume3,aquecimento);
+    /*for(int i=1000; i<100000;i+=10000){
         executaTeste(volume1,volume2,volume3,i);
-    }
-    */
-    compara(100,100,10000);
-    executaTeste(121,418,1,10000);
+    }*/
+    compara(1000,1000,10000);
+    executaTeste(1007,3479,277500,10000);
     return 0;
 }
