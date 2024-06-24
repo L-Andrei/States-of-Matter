@@ -35,9 +35,9 @@ void executaTeste(double volume1, double volume2, double volume3, double aquecim
         loops_benzeno++;
     }
 
-    std::cout << "Água demorou: " << loops_agua << std::endl;
-    std::cout << "Etanol demorou: " << loops_etanol << std::endl;
-    std::cout << "Benzeno demorou: " << loops_benzeno << std::endl;
+    std::cout << "Água demorou: " << loops_agua << " segundos" << std::endl;
+    std::cout << "Etanol demorou: " << loops_etanol << " segundos" << std::endl;
+    std::cout << "Benzeno demorou: " << loops_benzeno << " segundos" << std::endl;
 
 }
 
