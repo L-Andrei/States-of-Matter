@@ -41,53 +41,40 @@ void executaTeste(double volume1, double volume2, double volume3, double aquecim
     std::cout << "\n" << std::endl;
 }
 
-void compara(double v1, double v2, double v3, double aquecimento){
+void compara(double v1, double v2, double aquecimento){
     bool sair = true;
     Ambiente amb = Ambiente(1,0); // ambiente a nível do mar.
     Substancia agua= Substancia(v1,1,0,4184);
     Substancia benzeno = Substancia(v2,0.879,0,1720);
-    Substancia etanol = Substancia(v3,0.789,0,2.44);
 
     // Calcula os pontos de ebulição de cada substância.
     agua.calculaPontoDeEbulicao(8.07131, 1730.63, 233.426, amb.conversor());
     benzeno.calculaPontoDeEbulicao(6.90565, 1211.033, 220.790, amb.conversor());
-    etanol.calculaPontoDeEbulicao(8.20417, 1642.89, 230.300, amb.conversor());
 
     while(sair){
 
         agua.esquentar(aquecimento);
         benzeno.esquentar(aquecimento);
-        etanol.esquentar(aquecimento);
 
-        if(agua.entrouEmEbulicao() && benzeno.entrouEmEbulicao() && etanol.entrouEmEbulicao()){
+        if(agua.entrouEmEbulicao() && benzeno.entrouEmEbulicao()){
 
             sair = false;
 
         }else if(agua.entrouEmEbulicao()){
 
-            agua= Substancia(v1+=1,1,0,4184);
+            agua = Substancia(v1+=1,1,0,4184);
             benzeno = Substancia(v2,0.879,0,1720);
-            etanol = Substancia(v3,0.789,0,2.44);
             agua.calculaPontoDeEbulicao(8.07131, 1730.63, 233.426, amb.conversor());
             benzeno.calculaPontoDeEbulicao(6.90565, 1211.033, 220.790, amb.conversor());
-            etanol.calculaPontoDeEbulicao(8.20417, 1642.89, 230.300, amb.conversor());
 
         }else if(benzeno.entrouEmEbulicao()){
 
-            agua= Substancia(v1,1,0,4184);
+            agua = Substancia(v1,1,0,4184);
             benzeno = Substancia(v2+=1,0.879,0,1720);
-            etanol = Substancia(v3,0.789,0,2.44);
             agua.calculaPontoDeEbulicao(8.07131, 1730.63, 233.426, amb.conversor());
             benzeno.calculaPontoDeEbulicao(6.90565, 1211.033, 220.790, amb.conversor());
-            etanol.calculaPontoDeEbulicao(8.20417, 1642.89, 230.300, amb.conversor());
 
-        }else if(etanol.entrouEmEbulicao()){
-            agua= Substancia(v1,1,0,4184);
-            benzeno = Substancia(v2,0.879,0,1720);
-            etanol = Substancia(v3+=100,0.789,0,2.44);
-            agua.calculaPontoDeEbulicao(8.07131, 1730.63, 233.426, amb.conversor());
-            benzeno.calculaPontoDeEbulicao(6.90565, 1211.033, 220.790, amb.conversor());
-            etanol.calculaPontoDeEbulicao(8.20417, 1642.89, 230.300, amb.conversor());
+
         }
 
     }
@@ -113,7 +100,7 @@ int main() {
         executaTeste(volume1,volume2,volume3,i);
     }
     */
-    compara(100,100,10000,1000);
-    executaTeste(299,1033,1,10000);
+    compara(100,100,10000);
+    executaTeste(121,418,1,10000);
     return 0;
 }
