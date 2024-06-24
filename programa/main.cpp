@@ -4,7 +4,7 @@
 #include "pontoDeEbulicao.h"
 
 
-void executaTeste(double volume1, double volume2, double volume3){
+void executaTeste(double volume1, double volume2, double volume3, double aquecimento){
     int loops_agua,loops_benzeno,loops_etanol; // Variáveis auxiliares.
     loops_agua = loops_benzeno = loops_etanol = 0; 
 
@@ -21,17 +21,17 @@ void executaTeste(double volume1, double volume2, double volume3){
 
 
     while (!agua.entrouEmEbulicao()) {
-        agua.esquentar(50000); 
+        agua.esquentar(aquecimento); 
         loops_agua++;
     }
 
     while (!etanol.entrouEmEbulicao()) {
-        etanol.esquentar(50000); 
+        etanol.esquentar(aquecimento); 
         loops_etanol++;
     }
 
     while (!benzeno.entrouEmEbulicao()) {
-        benzeno.esquentar(50000); 
+        benzeno.esquentar(aquecimento); 
         loops_benzeno++;
     }
 
@@ -43,13 +43,14 @@ void executaTeste(double volume1, double volume2, double volume3){
 
 
 int main() {
-    double volume1, volume2, volume3;
+    double volume1, volume2, volume3, aquecimento;
 
+    aquecimento = 50000;
     volume1 = 100;
     volume2 = 345.5;
     volume3 = 277500;
     
-    executaTeste(volume1,volume2,volume3);
+    executaTeste(volume1,volume2,volume3,aquecimento);
 
     return 0;
 }
