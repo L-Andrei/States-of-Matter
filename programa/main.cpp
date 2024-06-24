@@ -9,7 +9,7 @@ void executaTeste(double volume1, double volume2, double volume3, double aquecim
     loops_agua = loops_benzeno = loops_etanol = 0; 
 
     //Inicia as substâncias e o ambiente.
-    Ambiente amb = Ambiente(1,0); 
+    Ambiente amb = Ambiente(1,0); // ambiente a nível do mar.
     Substancia agua= Substancia(volume1,1,0,4184);
     Substancia benzeno = Substancia(volume2,0.879,0,1720);
     Substancia etanol = Substancia(volume3,0.789,0,2.44);
