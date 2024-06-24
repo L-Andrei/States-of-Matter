@@ -44,9 +44,12 @@ void executaTeste(double volume1, double volume2, double volume3){
 
 int main() {
     double volume1, volume2, volume3;
+
     volume1 = 100;
     volume2 = 345.5;
     volume3 = 277500;
+    
     executaTeste(volume1,volume2,volume3);
+
     return 0;
 }
