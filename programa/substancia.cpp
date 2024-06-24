@@ -17,6 +17,11 @@ void Substancia::esquentar(double calorPorSeg){ // Esquenta a substância com um
     temp += deltaTemp; // aumenta ou diminui a temperatura.
 }
 
+void Substancia::esquentarUmGrau(){ 
+    double deltaTemp = 1;
+    temp += deltaTemp;
+}
+
 void Substancia::equilibrioTermico(Ambiente amb){
     temp = amb.getTemperatura(); // Equilibra a temperatura da substância com a do ambiente.
 }
@@ -40,4 +45,9 @@ double Substancia::getTemp(){
 
 void Substancia::setVolume(double v){
     volume = v;
+    m = d * volume;
+}
+
+double Substancia::getPontoDeEbulicao(){
+    return temp_ebulicao;
 }

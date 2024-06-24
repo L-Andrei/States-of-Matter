@@ -18,11 +18,13 @@ public:
 
     Substancia(double v, double densidade, double t, double c);
     void esquentar(double calorPorSeg);
+    void esquentarUmGrau();
     void equilibrioTermico(Ambiente amb);
     void calculaPontoDeEbulicao(double a, double b, double c, Ambiente amb);
     bool entrouEmEbulicao();
     double getTemp();
     void setVolume(double v);
+    double getPontoDeEbulicao();
 
 };
 
