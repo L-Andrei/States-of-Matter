@@ -5,14 +5,16 @@
 
 
 void executaTeste(double volume1, double volume2, double volume3){
-    int loops_agua,loops_benzeno,loops_etanol;
-    loops_agua = loops_benzeno = loops_etanol = 0;
+    int loops_agua,loops_benzeno,loops_etanol; // Variáveis auxiliares.
+    loops_agua = loops_benzeno = loops_etanol = 0; 
 
-    Ambiente amb = Ambiente(1,0);
+    //Inicia as substâncias e o ambiente.
+    Ambiente amb = Ambiente(1,0); 
     Substancia agua= Substancia(volume1,1,0,4184);
     Substancia benzeno = Substancia(volume2,0.879,0,1720);
     Substancia etanol = Substancia(volume3,0.789,0,2.44);
 
+    // Calcula os pontos de ebulição de cada substância.
     agua.calculaPontoDeEbulicao(8.07131, 1730.63, 233.426, amb.conversor());
     etanol.calculaPontoDeEbulicao(8.20417, 1642.89, 230.300, amb.conversor());
     benzeno.calculaPontoDeEbulicao(6.90565, 1211.033, 220.790, amb.conversor());
